@@ -8,10 +8,6 @@
    что на лекциях она была. 
 
    Алгортм универсальный и работает для любой квадратной матрицы.
-
-   Проблему с пустым центральным элементом в случае матриц с нечетным количеством строк/столбцов решил костылем перед заполнением
-   массива, красивее придумать не получилось. Если будет возможность, напишите, пожалуйста, как можно было это реализовать
-   по-другому. Спасибо! :-)
 */
 
 Console.WriteLine("Task 62:");
@@ -60,7 +56,7 @@ int[,] FillArray(int[,] arr, int elemValueStart, int elemValueFinish, int rowTop
     }
     colLeft++;
     Console.WriteLine($"rowTop - {rowTop},rowBottom - {rowBottom}, colLeft - {colLeft}, colRight - {colRight}, elemValue - {elemValue}");
-    if (elemValue < elemValueFinish)
+    if (elemValue <= elemValueFinish)
     {
         FillArray(arr, elemValue, elemValueFinish, rowTop, rowBottom, colLeft, colRight);
     }
@@ -82,8 +78,6 @@ int row = Convert.ToInt32(Console.ReadLine());
 
 int[,] arr = new int[row, row];
 arr = CreateArray(row);
-if (row % 2 != 0)
-    arr[row / 2, row / 2] = row * row;
 arr = FillArray(arr, 1, row * row, 0, row, 0, row);
 
 ShowArray(arr);
